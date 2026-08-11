@@ -1,6 +1,6 @@
 # Repository Guidelines
 
-This is a small Qt Widgets desktop application built with CMake and C++17. It currently provides a main window, one push button, and Chinese translation support.
+1his is a small Qt Widgets desktop application built with CMake and C++17. It currently provides a main window, one push button, and Chinese translation support.
 
 ## Project Structure & Module Organization
 
