@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>447</width>
+    <height>692</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>空调遥控器</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="centralLayout">
+    <property name="leftMargin">
+     <number>36</number>
+    </property>
+    <property name="topMargin">
+     <number>28</number>
+    </property>
+    <property name="rightMargin">
+     <number>36</number>
+    </property>
+    <property name="bottomMargin">
+     <number>28</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="remoteFrame">
+      <property name="minimumSize">
+       <size>
+        <width>320</width>
+        <height>470</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame#remoteFrame {
+    background: #f7f9fb;
+    border: 1px solid #c8d0d8;
+    border-radius: 8px;
+}
+QLabel#titleLabel {
+    color: #1f2933;
+    font-size: 22px;
+    font-weight: 600;
+}
+QLabel#displayTitleLabel,
+QLabel#gaugeValueLabel,
+QLabel#temperatureLabel {
+    color: #3d4b5c;
+    font-size: 14px;
+}
+QLCDNumber#temperatureDisplay {
+    background: #b7c7d3;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 6px;
+}
+QPushButton#powerButton {
+    background: #d94841;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px;
+}
+QPushButton#powerButton:checked {
+    background: #168a57;
+}
+QPushButton#displayModeButton {
+    background: #eef3f7;
+    color: #253241;
+    border: 1px solid #aeb8c2;
+    border-radius: 4px;
+    padding: 4px 10px;
+}
+QPushButton#displayModeButton:hover {
+    background: #dde8f0;
+}
+QGroupBox {
+    border: 1px solid #ccd5df;
+    border-radius: 6px;
+    margin-top: 12px;
+    padding: 12px 10px 10px 10px;
+    color: #283646;
+    font-size: 15px;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 12px;
+    padding: 0 4px;
+}
+QRadioButton {
+    color: #253241;
+    font-size: 15px;
+    spacing: 8px;
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="remoteLayout">
+       <property name="spacing">
+        <number>18</number>
+       </property>
+       <property name="leftMargin">
+        <number>24</number>
+       </property>
+       <property name="topMargin">
+        <number>24</number>
+       </property>
+       <property name="rightMargin">
+        <number>24</number>
+       </property>
+       <property name="bottomMargin">
+        <number>24</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="titleLabel">
+         <property name="text">
+          <string>空调遥控器</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="displayGroupBox">
+         <property name="minimumSize">
+          <size>
+           <width>328</width>
+           <height>105</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>温度显示</string>
+         </property>
+         <layout class="QVBoxLayout" name="displayLayout">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <item>
+           <layout class="QHBoxLayout" name="displayHeaderLayout">
+            <item>
+             <widget class="QLabel" name="displayTitleLabel">
+              <property name="text">
+               <string>当前温度</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="displayModeButton">
+              <property name="text">
+               <string>仪表</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QStackedWidget" name="displayStackedWidget">
+            <property name="currentIndex">
+             <number>1</number>
+            </property>
+            <widget class="QWidget" name="lcdPage">
+             <layout class="QVBoxLayout" name="lcdPageLayout">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLCDNumber" name="temperatureDisplay">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>70</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::Shape::NoFrame</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Plain</enum>
+                </property>
+                <property name="smallDecimalPoint">
+                 <bool>false</bool>
+                </property>
+                <property name="digitCount">
+                 <number>2</number>
+                </property>
+                <property name="mode">
+                 <enum>QLCDNumber::Mode::Dec</enum>
+                </property>
+                <property name="segmentStyle">
+                 <enum>QLCDNumber::SegmentStyle::Filled</enum>
+                </property>
+                <property name="intValue" stdset="0">
+                 <number>24</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="gaugePage">
+             <layout class="QVBoxLayout" name="gaugePageLayout">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QDial" name="temperatureGaugeDial">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>140</width>
+                  <height>140</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="minimum">
+                 <number>16</number>
+                </property>
+                <property name="maximum">
+                 <number>30</number>
+                </property>
+                <property name="singleStep">
+                 <number>1</number>
+                </property>
+                <property name="value">
+                 <number>24</number>
+                </property>
+                <property name="notchesVisible">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignmentFlag::AlignTop">
+               <widget class="QLabel" name="gaugeValueLabel">
+                <property name="text">
+                 <string>24 °C</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QPushButton" name="powerButton">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>80</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>80</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>开</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="modeGroupBox">
+         <property name="minimumSize">
+          <size>
+           <width>328</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>模式选择</string>
+         </property>
+         <layout class="QHBoxLayout" name="modeLayout">
+          <property name="spacing">
+           <number>16</number>
+          </property>
+          <item>
+           <widget class="QRadioButton" name="coolRadioButton">
+            <property name="text">
+             <string>制冷</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="heatRadioButton">
+            <property name="text">
+             <string>制热</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="temperatureGroupBox">
+         <property name="minimumSize">
+          <size>
+           <width>328</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>温度调节</string>
+         </property>
+         <layout class="QVBoxLayout" name="temperatureLayout">
+          <property name="spacing">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="temperatureLabel">
+            <property name="text">
+             <string>设定温度</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="temperatureSpinBox">
+            <property name="minimumSize">
+             <size>
+              <width>294</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+            <property name="buttonSymbols">
+             <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+            </property>
+            <property name="accelerated">
+             <bool>false</bool>
+            </property>
+            <property name="suffix">
+             <string> °C</string>
+            </property>
+            <property name="minimum">
+             <number>16</number>
+            </property>
+            <property name="maximum">
+             <number>30</number>
+            </property>
+            <property name="singleStep">
+             <number>1</number>
+            </property>
+            <property name="value">
+             <number>24</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>447</width>
+     <height>18</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>temperatureSpinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>temperatureDisplay</receiver>
+   <slot>display(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>210</x>
+     <y>430</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>210</x>
+     <y>160</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperatureSpinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>temperatureGaugeDial</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>210</x>
+     <y>430</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>210</x>
+     <y>160</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
